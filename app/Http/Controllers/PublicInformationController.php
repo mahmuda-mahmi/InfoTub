@@ -17,6 +17,7 @@ class PublicInformationController extends Controller
             'posts' => $posts,
         ]);
     }
+
     public function show(Information $information): View
     {
         abort_unless(

@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\Creator\InformationController as CreatorInformationController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\PublicInformationController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PublicInformationController;
-use App\Http\Controllers\Creator\InformationController as CreatorInformationController;
 
 Route::view('/', 'welcome')->name('home');
 
@@ -20,10 +20,10 @@ Route::middleware([Authenticate::class])->group(function (): void {
     Route::get('/information/create', [InformationController::class, 'create'])->name('information.create');
     Route::post('/information', [InformationController::class, 'store'])->name('information.store');
     Route::prefix('creator')
-    ->name('creator.')
-    ->group(function (): void {
-        Route::resource('posts', CreatorInformationController::class);
-    });
+        ->name('creator.')
+        ->group(function (): void {
+            Route::resource('posts', CreatorInformationController::class);
+        });
 });
 
 require __DIR__.'/settings.php';

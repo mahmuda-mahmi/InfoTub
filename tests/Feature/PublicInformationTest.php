@@ -22,4 +22,3 @@ test('visitors can see published information but not drafts', function () {
         ->assertSee('Published blog post')
         ->assertDontSee('Private draft post');
 });
-
